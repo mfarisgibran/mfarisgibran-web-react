@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import axios from 'axios'
+import { createClient } from '@formium/client'
 
-const API_URL = 'https://api.formium.io/submit/6005981cd0a32c0001f499e9/contact'
+const formium = createClient('6005981cd0a32c0001f499e9')
 
 const Contact = () => {
   return (
@@ -10,10 +10,10 @@ const Contact = () => {
       <Formik
         initialValues={{ name: '', email: '', message: '' }}
         onSubmit={(values) => {
-          axios
-            .post(API_URL, values)
+          formium
+            .submitForm('contact', values)
             .then((response) => {
-              console.log(response.data)
+              console.log(response)
             })
             .catch((error) => {
               console.log(error)
@@ -24,6 +24,7 @@ const Contact = () => {
           <div>
             <label htmlFor="name">Your Name</label>
             <Field name="name" type="text" placeholder="Daniel Schwarz" />
+            <ErrorMessage name="name" />
           </div>
           <div>
             <label htmlFor="email">Your Email</label>
@@ -32,10 +33,12 @@ const Contact = () => {
               type="email"
               placeholder="daniel.schwarz@mail.com"
             />
+            <ErrorMessage name="email" />
           </div>
           <div>
             <label htmlFor="message">Message</label>
             <Field as="textarea" name="message" cols="30" rows="10" />
+            <ErrorMessage name="message" />
           </div>
           <div>
             <Field type="submit" value="Send message" />
