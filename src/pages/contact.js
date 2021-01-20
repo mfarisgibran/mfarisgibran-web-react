@@ -45,7 +45,7 @@ const AlertMessage = styled.p`
   font-size: 14px;
 `
 
-const formium = createClient('6005981cd0a32c0001f499e9')
+const formium = createClient(process.env.REACT_APP_FORMIUM_PROJECT_ID)
 
 const Contact = () => {
   const [status, setStatus] = useState('')
