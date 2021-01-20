@@ -93,7 +93,7 @@ const Contact = () => {
               <ErrorMessage name="message" />
             </FieldSet>
             <FieldSet>
-              <Field type="submit" value="Send message" />
+              <Field type="submit" value="Send Message" />
               <AlertMessage>{status}</AlertMessage>
             </FieldSet>
           </Form>
