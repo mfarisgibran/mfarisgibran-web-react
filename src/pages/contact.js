@@ -41,6 +41,9 @@ const FieldSet = styled.div`
     }
   }
 `
+const AlertMessage = styled.p`
+  font-size: 14px;
+`
 
 const formium = createClient('6005981cd0a32c0001f499e9')
 
@@ -89,7 +92,7 @@ const Contact = () => {
             </FieldSet>
             <FieldSet>
               <Field type="submit" value="Send message" />
-              <p>{status}</p>
+              <AlertMessage>{status}</AlertMessage>
             </FieldSet>
           </Form>
         </Formik>
