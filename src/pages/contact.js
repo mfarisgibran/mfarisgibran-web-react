@@ -25,11 +25,13 @@ const FieldSet = styled.div`
     padding: 5px;
     border-radius: 5px;
     border: solid #473720 2px;
+    font-size: 16px;
   }
   textarea {
     padding: 5px;
     border-radius: 5px;
     border: solid #473720 2px;
+    font-size: 16px;
   }
   input[type='submit'] {
     background-color: #473720;
@@ -42,7 +44,7 @@ const FieldSet = styled.div`
   }
 `
 const AlertMessage = styled.p`
-  font-size: 14px;
+  font-size: 16px;
 `
 
 const formium = createClient(process.env.REACT_APP_FORMIUM_PROJECT_ID)
@@ -66,7 +68,7 @@ const Contact = () => {
                 setStatus(`Thank you ${values.name} for your message!`)
               })
               .catch((error) => {
-                setStatus(`Your message can't be sent`)
+                setStatus(`Your message can't be sent!`)
               })
           }}
         >
