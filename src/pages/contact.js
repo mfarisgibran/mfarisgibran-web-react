@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { createClient } from '@formium/client'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 
 const Container = styled.div`
   display: flex;
@@ -47,6 +48,9 @@ const Contact = () => {
   const [status, setStatus] = useState('')
   return (
     <Container>
+      <Helmet>
+        <title>Contact – M Faris Gibran</title>
+      </Helmet>
       <div>
         <h1>Contact Me</h1>
         <Formik
