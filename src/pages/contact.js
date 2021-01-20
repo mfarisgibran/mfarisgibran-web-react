@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { createClient } from '@formium/client'
 import styled from 'styled-components'
@@ -43,6 +44,7 @@ const FieldSet = styled.div`
 const formium = createClient('6005981cd0a32c0001f499e9')
 
 const Contact = () => {
+  const [status, setStatus] = useState('')
   return (
     <Container>
       <div>
@@ -50,13 +52,14 @@ const Contact = () => {
         <Formik
           initialValues={{ name: '', email: '', message: '' }}
           onSubmit={(values) => {
+            setStatus('Sending your message...')
             formium
               .submitForm('contact', values)
               .then((response) => {
-                console.log(response)
+                setStatus(`Thank you ${values.name} for your message!`)
               })
               .catch((error) => {
-                console.log(error)
+                setStatus(`Your message can't be sent`)
               })
           }}
         >
@@ -82,6 +85,7 @@ const Contact = () => {
             </FieldSet>
             <FieldSet>
               <Field type="submit" value="Send message" />
+              <p>{status}</p>
             </FieldSet>
           </Form>
         </Formik>
